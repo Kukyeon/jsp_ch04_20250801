@@ -1,3 +1,5 @@
+<%@page import="java.util.Enumeration"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +23,11 @@
 	String memberage = request.getParameter("memberage"); // 회원 나이
 	String memberemail1 = request.getParameter("email1"); //회원 이메일 아이디
 	String memberemail2 = request.getParameter("email2"); // 회원 이메일 도메인
-	String[] memberhobby = request.getParameterValues("hobby"); // 회원 취미 string 배열로 받아주기
+	
+	//String[] memberhobby = request.getParameterValues("hobby"); // 회원 취미 string 배열로 받아주기
+	Map<String, String[]> hobbymap = request.getParameterMap();  // 취미체크박스 map 구조로 받기
+	Enumeration<String> hobbyenum = request.getParameterNames(); // 취미 체크박스 열거형으로 받기 
+	// 모든 파라미터의 이름만 가져옴;;
 	String memberimtro = request.getParameter("imtro"); // 회원 자기소개
 	%>
 
@@ -36,23 +42,39 @@
 			<li>성별 : <%= gender %></li>
 			<li>나이 : <%= memberage %></li>
 			<li>이메일 : <%= memberemail1 %>@<%= memberemail2 %></li>
-			<li>취미 :
-			 <% 
-			 
-			 if(memberhobby != null){// 취미 체크박스 선택이 하나도 되지않고 넘어왔을경우
-			 
-			 for(String hobby : memberhobby){
-				    out.print(hobby + "/ ");
-				} 
-			 }else {
-					out.print("선택된 취미 없음");
+			<li>취미 map :
+			<%
+				if(hobbymap.get("hobby") == null) {
+					out.println("취미없음");
+				} else {
+					for(String hobby : hobbymap.get("hobby")) { //hobbyMap의 key값만 가져오기
+							out.println(hobby);						
+						}
 				}
-			//for(int i=0 ; i < memberhobby.length ; i++){
-		 	//	out.println(memberhobby[i] + "/");
-		 //	}
-
-			
-			 %>
+				
+			%>
+			</li>
+			<li>
+			<%
+				String[] hobbies = null;
+				if(!hobbyenum.hasMoreElements()) {
+					out.println("취미없음");
+				} else {
+					while(hobbyenum.hasMoreElements()) {
+						String hobby = hobbyenum.nextElement();
+						//System.out.println(hobby);
+						if(hobby.equals("hobby")) {							 
+							hobbies = request.getParameterValues(hobby);
+						}							
+					}
+					if(hobbies != null) {
+						for(String hobby :hobbies) {
+							out.print(hobby +  " / ");
+						}
+					}	
+				}
+				
+			%>
 			</li>
 			<li>자기소개 : <%= memberimtro %></li>
 		
