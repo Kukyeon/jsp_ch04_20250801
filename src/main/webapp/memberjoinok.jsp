@@ -42,7 +42,12 @@
 			 for (String hobby : memberhobby) {
 				    out.println(hobby + "/ ");
 				}
-			 
+			
+			//for(int i=0 ; i < memberhobby.length ; i++){
+		 	//	out.println(memberhobby[i] + "/");
+		 //	}
+
+			
 			 %>
 			</li>
 			<li>자기소개 : <%= memberimtro %></li>
