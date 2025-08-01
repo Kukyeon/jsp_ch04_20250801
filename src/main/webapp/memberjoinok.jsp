@@ -37,9 +37,10 @@
 			<li>나이 : <%= memberage %></li>
 			<li>이메일 : <%= memberemail1 %>@<%= memberemail2 %></li>
 			<li>취미 :
-			 <% 	
+			 <% 
+			 
 			 for (String hobby : memberhobby) {
-				    out.println(hobby + "/");
+				    out.println(hobby + "/ ");
 				}
 			 
 			 %>
