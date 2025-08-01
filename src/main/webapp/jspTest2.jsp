@@ -17,12 +17,12 @@
 		if(age >= 20){
 			 //성년
 	%>
-		<span style="font-size: 60px; color: red;">성년</span>
+		<span style="font-size: 60px; color: red;">성년</span> <!-- html -->
 	<%		 
 		 } else {
 			 //미성년
 	%>
-		<span style="font-size: 60px; color: blue;">미성년</span>
+		<span style="font-size: 60px; color: blue;">미성년</span>  <!-- html -->
 	<%		 
 		 }
 		
