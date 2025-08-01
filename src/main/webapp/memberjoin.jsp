@@ -11,7 +11,7 @@
 	<h2>회원 가입 양식</h2>
 	 <hr>
 	 
-	 <form action="memberjoinok.jsp">
+	 <form action="memberjoinok.jsp" method="get"> <!--   method "get" 은 주소창에 표시 , "post" 는 미표시 -->
 	 	
 	 	아이디 : <br> <input type="text" name="memberid"><br>
 	 	비밀번호 : <br> <input type="password" name="memberpw"><br>
@@ -38,6 +38,9 @@
 	 	
 	 	<input type="submit" value="회원가입">
  		<input type="reset" value="취소">
+	 
+		
+	 	<!-- r -->
 	 
 	 
 	 </form>

@@ -9,6 +9,8 @@
 <body>
 	<%
 		
+	request.setCharacterEncoding("UTF-8"); // 언어가 깨지지 않도록 방지해주는것 가장 먼저 실행
+	
 	String memberid = request.getParameter("memberid"); // 회원아이디
 	String memberpw = request.getParameter("memberpw"); // 회원 비밀번호
 	String membername = request.getParameter("membername"); // 회원 이름
